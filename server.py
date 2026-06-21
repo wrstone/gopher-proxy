@@ -686,7 +686,10 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main() -> None:
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_PORT
+    if len(sys.argv) > 1:
+        port = int(sys.argv[1])
+    else:
+        port = int(os.environ.get("PORT", DEFAULT_PORT))
     server = ThreadingHTTPServer((BIND_HOST, port), Handler)
     print(f"Gopher proxy running on {BIND_HOST}:{port}")
     print(f"  Standalone: http://127.0.0.1:{port}/")

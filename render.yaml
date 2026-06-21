@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: wrstone-gopher-proxy
+    runtime: python
+    plan: free
+    buildCommand: "true"
+    startCommand: python server.py
+    healthCheckPath: /
+    envVars:
+      - key: BIND_HOST
+        value: 0.0.0.0
+      - key: GOPHER_START
+        value: gopher://sdf.org/users/wrstone/
