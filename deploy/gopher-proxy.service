@@ -1,0 +1,17 @@
+[Unit]
+Description=HTML-to-Gopher proxy
+After=network.target
+
+[Service]
+Type=simple
+User=gopher-proxy
+Group=gopher-proxy
+WorkingDirectory=/opt/gopher-proxy
+Environment=GOPHER_START=gopher://sdf.org/users/wrstone/
+Environment=BIND_HOST=127.0.0.1
+ExecStart=/usr/bin/python3 /opt/gopher-proxy/server.py 8765
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
