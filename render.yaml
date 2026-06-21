@@ -3,6 +3,8 @@ services:
     name: wrstone-gopher-proxy
     runtime: python
     plan: free
+    repo: https://github.com/wrstone/gopher-proxy
+    branch: main
     buildCommand: "true"
     startCommand: python server.py
     healthCheckPath: /
